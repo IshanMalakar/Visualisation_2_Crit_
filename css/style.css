@@ -1,0 +1,178 @@
+/* Base body and general layout */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+p {
+    font-family: "Roboto", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size:medium
+}
+
+h2{
+    font-family: "Bebas Neue", sans-serif;
+     font-weight: 400;
+     font-style: normal;
+     font-size: xx-large;
+      
+}
+
+.heading{
+    font-size: xx-large;
+    text-align: left;
+}
+/* Page container */
+.page {
+    width: 1400px;
+    background-color:#cbcbcb;
+    margin: auto;
+    padding-top: 20px;
+    padding-left: 250px;
+    padding-right: 250px;
+    padding-bottom: 100px;
+}
+
+/* Vis-container ensures charts take full width */
+.vis-container {
+    width: 100%;
+    height: auto;
+}
+
+.h1{
+    
+        font-family: "Bebas Neue", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+        
+      
+}
+
+/* Description alignment */
+.description-right {
+    padding-left: 255px;
+    margin-bottom: 10px;
+    padding-top: 50px;
+    font-size: small;
+    max-width: 1000px;
+    /* text-align: justify; */
+  
+    
+
+    
+}
+
+.bar_chart_title{
+    padding-left: 250px;
+}
+
+#bar_chart{
+    margin-top: px;
+    padding-top: 0px;
+    padding-left: 250px;
+}
+
+.Employment-status{
+    padding-top: 5px;
+}
+
+
+
+.median_income_chart{
+    padding-left: 80px;
+    padding-top: 80px;
+    
+}
+
+.median_income_desc{
+    padding-left: 80px; ;
+    
+}
+
+.bold_group_select{
+    font-weight: bolder;
+    font-size: large;
+    color: chocolate;
+}
+
+#median_income_chart {
+    padding-left: 0px; /* Shift to the right */
+    margin-top: 20px; /* Add margin on top to give it some space */
+    padding-top: 0px;
+}
+
+#line_chart {
+   
+            
+}
+
+#scatter_plot{
+    
+}
+
+
+.pie-container {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Adjust this based on the height of the pie chart */
+    
+}
+
+#pie_chart {
+    position: absolute;
+    padding-left: 50px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#pie_chart_desc {
+    position: absolute;
+    top: 68%;  
+    left: 50%;  
+    transform: translate(-50%, -50%); 
+    text-align: center;
+    font-size: 12px;
+    color: black;  /* Color for highlighting */
+}
+
+#scatter_plot_chart{
+    padding-right: 400px;
+}
+
+.heading_pie_chart{
+    padding-left: 80px;
+}
+.pie_chart_writing{
+    padding-left: 85px;
+}
+
+.pie_chart_span{
+    color:rgb(253, 121, 21);
+    font-weight: 600;
+    
+}
+.highlighted-value {
+    color: red;
+    font-weight: bold;
+}
+
+
+
+.pure-g {
+    margin-bottom: 20px;
+}
+.pure-u-1-2{
+    width: 50%;
+}
+
+/* Optional responsiveness */
+@media (max-width: 768px) {
+    .pure-u-1-2 {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}

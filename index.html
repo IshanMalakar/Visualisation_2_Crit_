@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fondamento:ital@0;1&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Visualization Dashboard</title>
+
+    <!-- Vega & Vega-Lite -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <!-- Pure.css -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+        integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    
+
+    <div class="page">
+        <div class="heading">
+        <h1>Victoria Employment Insights </h1>
+    </div>
+        <!-- pure grid group -->
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+                <h2>Unemployment Rate by Region (2021)</h2>
+                <div id="choropleth_map" class="vis-container"></div>
+            </div>
+            <div class="pure-u-1-2">
+                <div class="description description-right">
+                    
+                    <p>For the choropleth map of unemployment rates, the data reveals varying rates across regions in Victoria. In July, the Mornington Peninsula has the highest unemployment rate at 6.1%, while Shepparton stands out with the lowest at 2.0%. Over the previous month in June, regions like Ballarat saw a significant drop from 3.5% to 2.7%, 
+                        while the Mornington Peninsula improved from 5.1% to 6.1%. This shows fluctuations in unemployment across the state, with certain regions facing persistent challenges.
+                        For the stacked bar chart showing employment by occupation and region, it’s clear that Melbourne - Inner has the highest number of professionals, with 149,768 professionals employed. Technician/Trades and Managers also see high employment numbers in regions like Melbourne - West and Melbourne - South East, reflecting the strong workforce distribution in metropolitan areas. In contrast, 
+                        regional areas like Shepparton and Warrnambool and South West have significantly fewer professionals and managers but see relatively higher employment in Labourers and Machinery operators, emphasizing the regional focus on more manual labor-intensive jobs..</p>
+                </div>
+                <div class = "bar_chart_title">
+                    <h2>Employment by Occupation and Region</h2>
+                </div>
+                <div id="bar_chart" class="vis-container"></div>
+            </div>
+        </div>
+
+        <div class="pure-u-1-2"> <div class="description line_chart">
+            <h2>Unemployment over time Victoria</h2>
+        </div><div id="line_chart" class=""></div>
+        </div>
+
+        <!-- Heat Map and Income Bar Chart section -->
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+                <div class="description Employment-status">
+                    <h2>Employment Status by Gender and Education Level</h2>
+                </div>
+                <div id="heat_map" class="vis-container"></div>
+
+                <!-- Dropdown Menu for Group Selection -->
+                <label for="groupDropdown">Select Group:</label>
+                <select id="groupDropdown">
+                    <option value="Males - with postgraduate degree">Males - Postgrad</option>
+                    <option value="Males - with non-school qualification">Males - Non-school Qual</option>
+                    <option value="Males - without a non-school qualification">Males - No Qual</option>
+                    <option value="Females - with postgraduate degree">Females - Postgrad</option>
+                    <option value="Females - with non-school qualification">Females - Non-school Qual</option>
+                    <option value="Females - without a non-school qualification">Females - No Qual</option>
+                </select>
+            </div>
+            <div class="pure-u-1-2">
+                <div class="description median_income_chart">
+                    <p>This visualisation presents the distribution of work status among many gender and education levels as a heat map. 
+                        While the vertical axis shows different employment statuses, including "Employed Full-time," "Employed Part-time," 
+                        "Unemployed," and "Not in Labour Force," the horizontal axis shows many gender and education groupings, including 
+                        "Males with postgraduate degree" and "Females without non-school qualifications." Darker blue tones imply greater 
+                        percentages of people in each group that fit a particular work status; the color's intensity shows this percentage as well. 
+                        This graphic lets one easily compare the groups in terms of their employment participation and emphasises trends like the generally higher 
+                        full-time employment for males with higher education, as opposed to females or males without formal qualifications, who show higher presence 
+                        in part-time or non-labor force categories. It provides understanding of how gender and education influence employment distribution, therefore 
+                        enabling analysis of workforce participation trends.</p>
+                </div>
+                <div class="description median_income_desc">
+                <p> <span class="bold_group_select"> Select a group to see the median weekly income below.</span></p>
+                <p id="median_income_chart"></p>
+            </div>
+            </div>
+            
+
+
+        </div>
+       
+
+        <!-- <div class="pure-u-1-2"> <div class="description bubble_chart">
+            <h2>Bubble chart</h2>
+        </div><div id="bubble_chart" class="vis-container"></div>
+        </div> -->
+
+
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+                <div class="description">
+                    <h2>Employment Growth by Industry and Region</h2>
+                    <p>This scatter plot visualizes employment size and growth for various industries and regions.</p>
+                </div>
+                <div id="scatter_plot" class="vis_container"></div>
+            </div>
+            <div class="pure-u-1-2">
+                
+                <div class="heading_pie_chart">
+                    <h2>Employment Size by Industry for Selected State</h2>
+                </div>
+                    <div class="pie_chart_writing">
+                    <p>On the scatter plot, <span class = "pie_chart_span">click on a shape representing a State to update the pie chart below</span></p>
+                
+                </div>
+                <div class="pie-container">
+    <div id="pie_chart" class="vis-container"></div>
+    <div id="pie_chart_desc">
+        <p>For all states, it can be said that Healthcare is the largest
+            and fastest-growing industry from 2011-2021, growing by 
+            <span class="highlighted-value">58%</span> in the ACT and 
+            <span class="highlighted-value">52%</span> in Victoria.
+        </p>
+    </div>
+</div>
+
+            </div>
+
+        <!-- Embed non-heat-map visualizations -->
+        <script>
+            // Correct paths to your JSON and CSV files
+            var choroplethSpec = "json/choropleth_map.vg.json";
+            var barChartSpec = "json/bar_chart.vg.json";
+            var line_chartSpec = "json/line_chart.vg.json";
+            var bubble_chartSpec = "json/bubble_chart.vg.json";
+            var scatter_plotSpec = "json/scatter_plot2.vg.json";  // Check this path
+            var pie_chartSpec = "json/pie_chart.vg.json";  // Check this path
+        
+            // Embed the visualizations
+            vegaEmbed('#choropleth_map', choroplethSpec, { "actions": false });
+            vegaEmbed('#bar_chart', barChartSpec, { "actions": false });
+            vegaEmbed('#line_chart', line_chartSpec, { "actions": false });
+            vegaEmbed('#bubble_chart', bubble_chartSpec, { "actions": false });
+        </script>
+
+        <!-- Include heat map specific logic -->
+        <script src="js/heat_map.js"></script>
+        <script src="js/scatter_plot.js"></script>
+
+    </div>
+
+</body>
+
+</html>

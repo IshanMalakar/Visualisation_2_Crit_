@@ -1,0 +1,74 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Scatter plot showing employment size and growth by industry and region.",
+    "height":600,
+    "width":400,
+    
+    "background":"#cbcbcb", 
+    "data": {
+      "url": "../data/Bubble_chart_.csv",
+      "format": { "type": "csv" }
+    },
+    "mark": { "type": "point",
+    "size" : 150 },
+
+    "encoding": {
+    "x": {
+      "field": "Employment_size",
+      "type": "quantitative",
+      "title": "Employment Size",
+      "scale": {
+        "zero": false
+      },
+      "axis": {
+        "labelFontSize": 12,
+        "titleFontSize": 14,
+        "grid": false,
+        "tickSize": 10,   
+        "domainWidth": 2  ,
+         "domainColor": "black"
+      }
+    },
+    "y": {
+      "field": "Employment_growth",
+      "type": "quantitative",
+      "title": "Employment Growth (%)",
+      "scale": {
+        "zero": false
+      },
+      "axis": {
+        "labelFontSize": 12,
+        "titleFontSize": 14,
+        "grid": false,
+        "tickSize": 10,   
+        "domainWidth": 2,
+        "domainColor": "black"  
+      }
+      },
+      "color": {
+        "field": "Industry",
+        "type": "nominal",
+        "title": "Industry",
+        "legend": {  "orient": "top-left" }
+      },
+      "shape": {
+        "field": "Region",
+        "type": "nominal",
+        "title": "Region",
+        "legend": { "orient": "bottom-left",  "columns" : 3, "offset" : -100,    "legendX": 50, "legendY" : 500}
+      },
+      "tooltip": [
+        { "field": "Industry", "type": "nominal", "title": "Industry" },
+        { "field": "Region", "type": "nominal", "title": "Region" },
+        { "field": "Employment_size", "type": "quantitative", "title": "Employment Size" },
+        { "field": "Employment_growth", "type": "quantitative", "title": "Employment Growth (%)" }
+      ]
+    },
+    "config": {
+      "axis": {
+        "labelFontSize": 12,
+        "titleFontSize": 14
+      }
+    }
+  }
+  

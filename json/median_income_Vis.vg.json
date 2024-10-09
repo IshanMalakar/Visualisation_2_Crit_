@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bar chart showing the median income by gender and education level.",
+  "height": 600,
+  "data": {
+    "name": "table"  
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Gender and Education Level",
+      "type": "nominal",
+      "title": "Gender and Education Level"
+    },
+    "y": {
+      "field": "Median Income (Weekly)",
+      "type": "quantitative",
+      "title": "Median Weekly Income"
+    },
+    "color": {
+      "field": "Gender and Education Level",
+      "type": "nominal",
+      "legend": null
+    },
+    "tooltip": [
+      {"field": "Gender and Education Level", "type": "nominal"},
+      {"field": "Median Income (Weekly)", "type": "quantitative", "title": "Median Income"}
+    ]
+  },
+  "config": {
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14
+    }
+  }
+}

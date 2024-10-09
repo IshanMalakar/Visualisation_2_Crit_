@@ -1,0 +1,50 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "height": 400,
+    "width":500,
+
+    "title": {
+        "text":"Employment size by industry for the selected state.",
+        "dy":-30
+    },
+    "background":"#ffffff", 
+    "data": {
+      "url": "../data/Bubble_chart_.csv",
+      "format": {"type": "csv"}
+    },
+    "transform": [
+      {
+        "filter": "datum['Region'] == 'Victoria'"
+      }
+
+    ],
+    
+    "mark": {
+      "type": "arc",
+      "innerRadius": 80
+    },
+
+    "encoding": {
+      "theta": {
+        "field": "Employment_size",
+        "type": "quantitative",
+        "title": "Employment Size"
+      },
+      "color": {
+        "field": "Industry",
+        "type": "nominal",
+        "title": "Industry"
+      },
+      "tooltip": [
+        {"field": "Industry", "type": "nominal", "title": "Industry"},
+        {"field": "Employment_size", "type": "quantitative", "title": "Employment Size"}
+      ]
+    },
+    "config": {
+      "legend": {
+        "titleFontSize": 12,
+        "labelFontSize": 10
+      }
+    }
+  }
+  

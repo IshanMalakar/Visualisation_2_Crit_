@@ -1,0 +1,81 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "fontSize": 16,
+    "color": "black",
+    "dy": -20,
+    "dx":-300
+  },
+  "width": 800,
+  "height": 770,
+  "background":"#cbcbcb", 
+  
+  "data": {
+    "url": "../json/SA4_2021_AUST_GDA94.json",
+    "format": {"type": "topojson", "feature": "VictoriaMap"}
+  },
+  "projection": {"type": "mercator"},
+  "transform": [
+    {
+      "lookup": "properties.SA4_NAME21",
+      "from": {
+        "data": {
+          "url": "../Data/MelbUnemployData.csv",
+          "format": {"type": "csv"}
+        },
+        "key": "Region",
+        "fields": ["UnemploymentRate", "Month"]
+      }
+    },
+    {
+      "calculate": "toNumber(datum.Month)",
+      "as": "Month"  
+    },
+    {
+      "calculate": "lower(trim(datum.Region))",  
+      "as": "Region"
+    },
+    {
+      "calculate": "lower(trim(datum.SA4_NAME21))",  
+      "as": "SA4_NAME21"
+    },
+    {
+      "filter": "datum.Month == selectedMonth"  
+    }
+  ],
+  "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1},
+  "encoding": {
+    "color": {
+      "field": "UnemploymentRate",
+      "type": "quantitative",
+      "scale": {
+        "domain": [0, 10], 
+       "range": ["#b3cde3", "#8c96c6", "#88419d"]  
+      },
+      "legend": {
+        "orient": "right",  
+        "offset": -100,
+        "title": "Unemployment Rate",
+        "titleFontSize": 12,
+        "labelFontSize": 10
+      }
+    },
+    "tooltip": [
+      {"field": "properties.SA4_NAME21", "type": "nominal", "title": "Region"},
+      {"field": "UnemploymentRate", "type": "quantitative", "title": "Unemployment Rate (%)"}
+    ]
+  },
+  "params": [
+    {
+      "name": "selectedMonth",
+      "value": 6,  
+      "bind": {
+        "input": "range",
+        "min": 6,
+        "max": 7,
+        "step": 1,
+        "name": "Select Month: "
+      }
+    }
+  ]
+}

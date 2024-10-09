@@ -1,0 +1,57 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Heat map of employment status by gender and education level.",
+    "background":"#cbcbcb", 
+    "data": {
+      "url": "../data/Education_Income.csv"
+    },
+    "transform": [
+      {"fold": ["Employed Full-time", "Employed Part-time", "Unemployed", "Not in Labor Force"], "as": ["Employment Type", "Value"]}
+    ],
+    "width": 400,
+    "height": 250,
+    "mark": "rect",
+    "encoding": {
+      "x": {
+        "field": "Gender and Education Level",
+        "type": "nominal",
+        "title": "Gender and Education Level",
+        "axis": {"labelAngle": -45,
+      "grid": false,
+        "tickSize": 30,   
+        "domainWidth": 2,
+      "domainColor": "black" ,
+      "labelPadding": 5}
+      },
+      "y": {
+        "field": "Employment Type",
+        "type": "nominal",
+        "title": "Employment Status",
+        "axis":{
+          "grid": false,
+        "tickSize": 30,   
+        "domainWidth": 2,
+      "domainColor": "black",
+      "labelPadding": 5
+        }
+      },
+      "color": {
+        "field": "Value",
+        "type": "quantitative",
+        "title": "Percentage",
+        "scale": {"scheme": "oranges"}
+      },
+      "tooltip": [
+        {"field": "Gender and Education Level", "type": "nominal", "title": "Group"},
+        {"field": "Employment Type", "type": "nominal", "title": "Employment Type"},
+        {"field": "Value", "type": "quantitative", "title": "Percentage"}
+      ]
+    },
+    "config": {
+      "axis": {
+        "labelFontSize": 12,
+        "titleFontSize": 14
+      }
+    }
+  }
+  

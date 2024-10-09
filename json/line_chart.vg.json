@@ -1,0 +1,72 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 1350,
+  "height": 600,
+  "background":"#cbcbcb", 
+  "data": {
+    "url": "../data/Unemployment_Line_chart.csv",
+    "format": {"type": "csv"}
+  },
+  "mark": "line",
+  "encoding": {
+    "x": {
+      "field": "Month",
+      "type": "ordinal",
+      "title": "Month",
+      "axis": {
+        "labelAngle": 0,
+        "grid": false,
+        "tickSize": 30,   
+        "domainWidth": 2,
+      "domainColor": "black"
+      }
+    },
+    "y": {
+      "field": "Unemployment (%)",
+      "type": "quantitative",
+      "title": "Unemployment Rate (%)",
+      "axis" : {
+        "grid": false,
+        "tickSize": 30,   
+        "domainWidth": 2,
+      "domainColor": "black"
+      }
+    },
+    "color": {
+      "field": "Year",
+      "type": "nominal",
+      "title": "Year",
+      "scale": {
+        "domain": ["2018", "2019", "2020", "2021", "2022", "2023"],
+        "range": ["#4daf4a", "#ff7f00", "#377eb8", "#e41a1c", "#984ea3", "#ffff33"]  
+      }
+    },
+    "tooltip": [
+      {"field": "Month", "type": "nominal", "title": "Month"},
+      {"field": "Year", "type": "nominal", "title": "Year"},
+      {"field": "Unemployment (%)", "type": "quantitative", "title": "Unemployment Rate (%)"}
+    ]
+  },
+  "params": [
+    {
+      "name": "yearFilter",
+      "value": null,
+      "bind": {
+        "input": "select",
+        "options": [
+          null, "2018", "2019", "2020", "2021", "2022", "2023"
+        ],
+        "labels": [
+          "Show All", "2018", "2019", "2020", "2021", "2022", "2023"
+        ],
+        "name": "Select Year: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "yearFilter == null || datum.Year == yearFilter"
+    }
+  ]
+ 
+}

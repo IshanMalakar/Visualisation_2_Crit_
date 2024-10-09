@@ -1,0 +1,49 @@
+Industry,Region,Employment_size,Employment_growth
+Healthcare,Victoria,445906,52
+Construction,Victoria,297981,41
+Retail Trade,Victoria,297471,8
+Education,Victoria,277100,37
+Accommodation and food services,Victoria,196300,28
+Manufacturing,Victoria,220823,-18
+Healthcare,NSW,529176,45
+Construction,NSW,315520,37
+Retail Trade,NSW,331486,2
+Education,NSW,322236,29
+Accommodation and food services,NSW,227466,8
+Manufacturing,NSW,201654,-24
+Healthcare,QLD,375511,54
+Construction,QLD,222234,21
+Retail Trade,QLD,226468,4
+Education,QLD,216015,34
+Accommodation and food services,QLD,175850,23
+Manufacturing,QLD,140285,18
+Healthcare,SA,137250,36
+Construction,SA,69648,25
+Retail Trade,SA,81181,-2
+Education,SA,73937,26
+Accommodation and food services,SA,55478,20
+Manufacturing,SA,60445,22
+Healthcare,WA,177550,56
+Construction,WA,115090,3
+Retail Trade,WA,114617,3
+Education,WA,114415,29
+Accommodation and food services,WA,85241,31
+Manufacturing,WA,68785,-23
+Healthcare,NT,15947,61
+Construction,NT,8598,7
+Retail Trade,NT,7736,-3
+Education,NT,10038,14
+Accommodation and food services,NT,7909,29
+Manufacturing,NT,2405,-39
+Healthcare,ACT,28459,58
+Construction,ACT,16523,38
+Retail Trade,ACT,16011,8
+Education,ACT,23352,36
+Accommodation and food services,ACT,15748,38
+Manufacturing,ACT,4120,2
+Healthcare,TAS,41724,60
+Construction,TAS,21821,32
+Retail Trade,TAS,2443,-0.5
+Education,TAS,24060,24
+Accommodation and food services,TAS,19461,23
+Manufacturing,TAS,16202,-14

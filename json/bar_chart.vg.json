@@ -1,0 +1,96 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Stacked bar chart for Employment by Occupation in Regions",
+  "width": 300,
+  "height": 375,
+  "background": "#cbcbcb",  
+  "data": {
+    "url": "../data/Employment_industry_Stacked_bar.csv",
+    "format": { "type": "csv" }
+  },
+  "transform": [
+    {
+      "fold": [
+        "Professionals",
+        "Technician/Trades",
+        "Managers",
+        "Clerical/Administrative",
+        "Community and Personal Service",
+        "Sales workers",
+        "Labourers",
+        "Machinery operators and drivers"
+      ],
+      "as": ["Occupation", "value"]
+    },
+    {
+      "filter": "selectedRegion === 'All' || datum.Region == selectedRegion"  
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "tooltip": true
+  },
+  "encoding": {
+    "x": {
+      "field": "Region",
+      "type": "nominal",
+      "axis": { "labelAngle": -45, "title": "Region", "labelFontSize": 10 ,
+        "grid": false,
+        "tickSize": 30,   
+        "domainWidth": 2,
+      "domainColor": "black"   },
+      "scale": {
+        "paddingInner": 0.4
+      }
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "value",
+      "type": "quantitative",
+      "title": "Number of Employees",
+      "axis": { "titleFontSize": 12,
+        "grid": false,
+        "tickSize": 10,   
+        "domainWidth": 2,
+      "domainColor": "black"   }
+    },
+    "color": {
+      "field": "Occupation",
+      "type": "nominal",
+      "title": "Occupation",
+      "scale": {
+        "range": [
+          "#1f78b4",  
+          "#33a02c",  
+          "#a6cee3",  
+          "#b2df8a",  
+          "#fb9a99",  
+          "#fdbf6f",  
+          "#cab2d6",  
+          "#ffff99"   
+        ]
+      }
+    },
+    "tooltip": [
+      { "field": "Occupation", "type": "nominal", "title": "Occupation" },
+      { "field": "value", "type": "quantitative", "title": "Number of Employees" }
+    ]
+  },
+  "params": [
+    {
+      "name": "selectedRegion",  
+      "value": "All",  
+      "bind": {
+        "input": "select",  
+        "options": [
+          "All", "Ballarat", "Bendigo", "Geelong", "Hume", "Latrobe - Gippsland", "Melbourne - Inner",
+          "Melbourne - Inner East", "Melbourne - Inner South", "Melbourne - North East",
+          "Melbourne - North West", "Melbourne - Outer East", "Melbourne - South East",
+          "Melbourne - West", "Mornington Peninsula", "North West", "Shepparton", 
+          "Warrnambool and South West"
+        ],
+        "name": "Select Region: "
+      }
+    }
+  ]
+}

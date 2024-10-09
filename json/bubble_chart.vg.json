@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 400,
+  "title": "Test Bubble Chart",
+  "data": {
+    "url": "../data/Bubble_chart_.csv",
+    "format": {"type": "csv"}
+  },
+  "mark": "circle",
+  "encoding": {
+    "x": {
+      "field": "Industry",
+      "type": "nominal",
+      "title": "Industry"
+    },
+    "y": {
+      "field": "Employment_growth",
+      "type": "quantitative",
+      "title": "Employment Growth (%)"
+    },
+    "size": {
+      "field": "Employment_size",
+      "type": "quantitative",
+      "title": "Employment Size"
+    },
+    "color": {
+      "field": "Region",
+      "type": "nominal",
+      "title": "Region"
+    },
+    "tooltip": [
+      {"field": "Industry", "type": "nominal", "title": "Industry"},
+      {"field": "Region", "type": "nominal", "title": "Region"},
+      {"field": "Employment_size", "type": "quantitative", "title": "Employment Size"},
+      {"field": "Employment_growth", "type": "quantitative", "title": "Employment Growth (%)"}
+    ]
+  }
+}
